@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import BurgerButton from '../BurgerButton/BurgerButton';
 import SearchPanel from '../SearchPanel/SearchPanel';
 import Logo from '../Logo/Logo';
+import AuthorCard from '../AuthorCard/AuthorCard';
 
 function Header() {
   return (
@@ -10,6 +11,7 @@ function Header() {
       <BurgerButton />
       <Logo />
       <SearchPanel />
+      <AuthorCard />
     </header>
   );
 }

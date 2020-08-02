@@ -1,0 +1,45 @@
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background:#444;
+}
+
+.letter {
+  margin: 0;
+  color: white;
+}
+
+.fone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: absolute;
+  max-width: 400px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.closeContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.avatar {
+  border-radius: 50%;
+}
