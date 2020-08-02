@@ -4,7 +4,7 @@ import styles from './Icon.module.css';
 function Icon(props) {
   return (
     <div className={styles.iconWrap}>
-      <img className={styles.icon} src={props.icon} />
+      <img className={styles.icon} src={props.icon} alt={props.title} />
     </div>
   );
 }
