@@ -1,0 +1,16 @@
+.wrap {
+  width: 100%;
+  display: flex;
+  box-shadow: 0 0 5px lightgray;
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.input {
+  width: 100%;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
