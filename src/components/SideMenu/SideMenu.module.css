@@ -1,5 +1,6 @@
 .wrap {
-  border-right: 1px solid lightgray;
+  flex: 1;
+  padding: 1rem;
 }
 
 .menuItem {
@@ -14,6 +15,10 @@
 
 .section {
   padding: 1rem 0;
+}
+
+.section:first-of-type {
+  padding-top: 0;
 }
 
 .section:not(:first-of-type) {
