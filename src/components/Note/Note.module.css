@@ -1,0 +1,16 @@
+.wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  box-shadow: 0 0 5px lightgray;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.header {
+  margin: 0;
+}
+
+.tags {
+  border-top: 1px solid ghostwhite;
+}
