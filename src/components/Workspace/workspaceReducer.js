@@ -1,4 +1,4 @@
-import { ADD_NOTE } from './appActions';
+import { ADD_NOTE } from './workspaceActions';
 
 const initialState = [
   {
@@ -10,7 +10,7 @@ const initialState = [
   }
 ];
 
-function appReducer(state = initialState, action) {
+function workspaceReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_NOTE:
       return [...state, action.payload];
@@ -19,4 +19,4 @@ function appReducer(state = initialState, action) {
   }
 }
 
-export default appReducer;
+export default workspaceReducer;

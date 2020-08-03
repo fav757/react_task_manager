@@ -2,22 +2,23 @@ import React from 'react';
 import styles from './Workspace.module.css';
 import EditNote from '../EditNote/EditNote';
 import Note from '../Note/Note';
+import { connect } from 'react-redux';
 
-function Workspace() {
+function Workspace(props) {
+  const notes = props.notesDatabase.map((note) => {
+    return <Note key={note.title} data={note} />
+  });
+
   return (
     <div className={styles.wrap}>
       <EditNote />
       <div className={styles.notesGrid}>
-        <Note />
-        <Note />
-        <Note />
-        <Note />
-        <Note />
-        <Note />
-        <Note />
+        {notes}
       </div>
     </div>
   );
 }
 
-export default Workspace;
+const mapStateToProps = (state) => ({notesDatabase: state['workspaceReducer']});
+
+export default connect(mapStateToProps)(Workspace);

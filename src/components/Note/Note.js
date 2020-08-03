@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './Note.module.css';
 
-function Note() {
+function Note(props) {
+  const { title, text, tags, color } = props.data;
+
   return (
-    <div className={styles.wrap}>
-      <h3 className={styles.header}>Note title</h3>
-      <div>Note text</div>
-      <div className={styles.tags}>Note tags</div>
+    <div style={{background: color}} className={styles.wrap}>
+      <h3 className={styles.header}>{title}</h3>
+      <div>{text}</div>
+      <div className={styles.tags}>{tags}</div>
     </div>
   );
 }
