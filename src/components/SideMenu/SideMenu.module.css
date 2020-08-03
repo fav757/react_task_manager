@@ -1,0 +1,21 @@
+.wrap {
+  border-right: 1px solid lightgray;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.menuItem:hover {
+  text-decoration: underline;
+}
+
+.section {
+  padding: 1rem 0;
+}
+
+.section:not(:first-of-type) {
+  border-top: 1px solid lightgray;
+}
