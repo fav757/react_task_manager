@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Workspace.module.css';
-import CreateNote from '../CreateNote/CreateNote';
+import EditNote from '../EditNote/EditNote';
 
 function Workspace() {
   return (
     <div className={styles.wrap}>
-      <CreateNote />
+      <EditNote />
     </div>
   );
 }

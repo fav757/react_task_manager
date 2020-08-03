@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './CreateNote.module.css';
+import styles from './EditNote.module.css';
 import TagedItem from '../TagedItem/TagedItem';
 import Icon from '../Icon/Icon';
 import backIcon from './back_icon.svg';
@@ -47,7 +47,7 @@ function Controlls() {
   );
 }
 
-function CreateNote() {
+function EditNote() {
   return (
     <form className={styles.wrap}>
       <Controlls />
@@ -61,4 +61,4 @@ function CreateNote() {
   );
 }
 
-export default CreateNote;
+export default EditNote;
