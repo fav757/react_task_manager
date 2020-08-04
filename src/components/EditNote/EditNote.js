@@ -49,15 +49,17 @@ function Controlls() {
 
 function EditNote() {
   return (
-    <form className={styles.wrap}>
-      <Controlls />
-      <input className={styles.input} name='title' placeholder='note title' />
-      <NoteTextarea />
-      <div className={styles.tagList}>
-        <TagedItem title='Home' />
-        <TagedItem title='Study' />
-      </div>
-    </form>
+    <div className={styles.wrap}>
+      <form className={styles.form}>
+        <Controlls />
+        <input className={styles.input} name='title' placeholder='note title' />
+        <NoteTextarea />
+        <div className={styles.tagList}>
+          <TagedItem title='Home' />
+          <TagedItem title='Study' />
+        </div>
+      </form>
+    </div>
   );
 }
 
