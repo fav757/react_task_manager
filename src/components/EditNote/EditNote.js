@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import styles from './EditNote.module.css';
 import TagedItem from '../TagedItem/TagedItem';
 import Icon from '../Icon/Icon';
@@ -10,57 +11,74 @@ import deleteIcon from './deleted_icon.svg';
 import pictureIcon from './picture_icon.svg';
 import tasksIcon from './tasks_icon.svg';
 import pinIcon from './pin_icon.svg';
+import { editNote } from '../Workspace/workspaceActions';
 
-function NoteTextarea() {
-  const [rowsLength, setRowLength] = useState(2);
-  const handleChange = (event) => {
-    if (
-      event.target.getBoundingClientRect().height < event.target.scrollHeight
-    ) {
-      setRowLength((state) => state + 1);
-    }
-  };
+function EditNote(props) {
+  const { title, text, tags, color } = props.data[props.id];
+  const handleChange = (event) =>
+    props.editNote({
+      id: props.id,
+      property: event.target.name,
+      value: event.target.value,
+    });
 
-  return (
-    <textarea
-      onChange={handleChange}
-      rows={rowsLength}
-      className={styles.input}
-      name='text'
-      placeholder='Note text'
-    ></textarea>
-  );
-}
-
-function Controlls() {
-  return (
-    <div className={styles.controlls}>
-      <Icon title='back' icon={backIcon} />
-      <Icon title='tag' icon={tagIcon} />
-      <Icon title='palette' icon={paletteIcon} />
-      <Icon title='picture' icon={pictureIcon} />
-      <Icon title='tasks' icon={tasksIcon} />
-      <Icon title='archive' icon={archiveIcon} />
-      <Icon title='delete' icon={deleteIcon} />
-      <Icon title='pin' icon={pinIcon} />
-    </div>
-  );
-}
-
-function EditNote() {
   return (
     <div className={styles.wrap}>
-      <form className={styles.form}>
-        <Controlls />
-        <input className={styles.input} name='title' placeholder='note title' />
-        <NoteTextarea />
+      <form style={{ background: color }} className={styles.form}>
+        <div className={styles.controlls}>
+          <div onClick={props.close}>
+            <Icon title='back' icon={backIcon} />
+          </div>
+          <div>
+            <Icon title='tag' icon={tagIcon} />
+          </div>
+          <div>
+            <Icon title='palette' icon={paletteIcon} />
+          </div>
+          <div>
+            <Icon title='picture' icon={pictureIcon} />
+          </div>
+          <div>
+            <Icon title='tasks' icon={tasksIcon} />
+          </div>
+          <div>
+            <Icon title='archive' icon={archiveIcon} />
+          </div>
+          <div>
+            <Icon title='delete' icon={deleteIcon} />
+          </div>
+          <div>
+            <Icon title='pin' icon={pinIcon} />
+          </div>
+        </div>
+        <input
+          onChange={handleChange}
+          value={title}
+          className={styles.input}
+          name='title'
+        />
+        <textarea
+          onChange={handleChange}
+          defaultValue={text}
+          className={styles.input}
+          name='text'
+        />
         <div className={styles.tagList}>
-          <TagedItem title='Home' />
-          <TagedItem title='Study' />
+          {tags.map((tag) => (
+            <TagedItem key={tag} title={tag} />
+          ))}
         </div>
       </form>
     </div>
   );
 }
 
-export default EditNote;
+const mapStateToProps = (state) => ({
+  data: state.workspaceReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  editNote: (value) => dispatch(editNote(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditNote);

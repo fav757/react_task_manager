@@ -1,17 +1,15 @@
 import React from 'react';
 import styles from './Workspace.module.css';
-import EditNote from '../EditNote/EditNote';
 import Note from '../Note/Note';
 import { connect } from 'react-redux';
 
 function Workspace(props) {
-  const notes = props.notesDatabase.map((note) => {
-    return <Note key={note.title} data={note} />
+  const notes = props.notesDatabase.map((note, index) => {
+    return <Note key={note.title} id={index} />
   });
 
   return (
     <div className={styles.wrap}>
-      <EditNote />
       <div className={styles.notesGrid}>
         {notes}
       </div>
