@@ -1,20 +1,15 @@
 import { ADD_NOTE, EDIT_NOTE } from './workspaceActions';
+import notePlaceholder from './notePlaceholder.jpg';
 
 const initialState = [
   {
+    images: [notePlaceholder, notePlaceholder],
     title: 'buy milk',
     text: 'tomorow will be promotion',
     tags: ['home'],
     color: 'lightskyblue',
     system: 'all',
-  },
-  {
-    title: 'Drink cofee',
-    text: 'Sometimes it can be very pleasently',
-    tags: ['work', 'fun'],
-    color: 'lightgreen',
-    system: 'all',
-  },
+  }
 ];
 
 function workspaceReducer(state = initialState, action) {

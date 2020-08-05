@@ -47,8 +47,14 @@ function CloseModalIcon(props) {
         props.close();
       }
     };
+
     document.addEventListener('click', closeModal);
-    return () => document.removeEventListener('click', closeModal);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('click', closeModal);
+      document.body.style.overflow = '';
+    };
   }, []);
 
   return (
