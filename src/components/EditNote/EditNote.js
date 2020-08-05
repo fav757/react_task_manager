@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styles from './EditNote.module.css';
 import TagedItem from '../TagedItem/TagedItem';
@@ -21,6 +21,16 @@ function EditNote(props) {
       property: event.target.name,
       value: event.target.value,
     });
+
+  useEffect(() => {
+    const closeModal = (event) => {
+      if (!event.target.closest('.' + styles.form)) {
+        props.close();
+      }
+    };
+    document.addEventListener('click', closeModal);
+    return () => document.removeEventListener('click', closeModal);
+  }, []);
 
   return (
     <div className={styles.wrap}>
