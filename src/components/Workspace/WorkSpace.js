@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 function Workspace(props) {
   const notes = props.notesDatabase.map((note, index) => {
-    return <Note key={note.title} id={index} />
+    return <Note key={index} id={index} />
   });
 
   return (

@@ -14,18 +14,17 @@ const initialState = [
     tags: ['work', 'fun'],
     color: 'lightgreen',
     system: 'all',
-  }
+  },
 ];
 
 function workspaceReducer(state = initialState, action) {
-  console.log(state);
-
   switch (action.type) {
     case ADD_NOTE:
       return [...state, action.payload];
     case EDIT_NOTE:
       const newState = [...state];
-      newState[action.payload.id][action.payload.property] = action.payload.value;
+      newState[action.payload.id][action.payload.property] =
+        action.payload.value;
       return newState;
     default:
       return state;
