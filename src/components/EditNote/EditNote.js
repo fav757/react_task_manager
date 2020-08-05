@@ -74,6 +74,7 @@ function PaletteModal(props) {
       <div onClick={handleClick} data-color={'lightskyblue'}></div>
       <div onClick={handleClick} data-color={'lightgreen'}></div>
       <div onClick={handleClick} data-color={'lightsalmon'}></div>
+      <div onClick={handleClick} data-color={'white'}></div>
     </div>
   );
 }
