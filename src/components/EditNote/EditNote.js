@@ -13,7 +13,7 @@ import tasksIcon from './tasks_icon.svg';
 import pinIcon from './pin_icon.svg';
 import { editNote } from '../Workspace/workspaceActions';
 
-function TitleInput(props) {
+function Inputs(props) {
   const handleChange = (event) => {
     props.editNote({
       id: props.id,
@@ -23,31 +23,20 @@ function TitleInput(props) {
   };
 
   return (
-    <input
-      onChange={handleChange}
-      value={props.title}
-      className={styles.input}
-      name='title'
-    />
-  );
-}
-
-function TextAreaInput(props) {
-  const handleChange = (event) => {
-    props.editNote({
-      id: props.id,
-      property: event.target.name,
-      value: event.target.value,
-    });
-  };
-
-  return (
-    <textarea
-      onChange={handleChange}
-      defaultValue={props.text}
-      className={styles.input}
-      name='text'
-    />
+    <React.Fragment>
+      <input
+        onChange={handleChange}
+        value={props.title}
+        className={styles.input}
+        name='title'
+      />
+      <textarea
+        onChange={handleChange}
+        defaultValue={props.text}
+        className={styles.input}
+        name='text'
+      />
+    </React.Fragment>
   );
 }
 
@@ -69,10 +58,34 @@ function CloseModalIcon(props) {
   );
 }
 
-function TagIcon() {
+function PaletteModal(props) {
+  const handleClick = (event) => {
+    props.editNote({
+      id: props.id,
+      property: 'color',
+      value: event.target.dataset.color,
+    });
+  };
+
   return (
-    <div>
-      <Icon title='tag' icon={tagIcon} />
+    <div className={styles.paletteModal}>
+      <div onClick={handleClick} data-color={'lightpink'}></div>
+      <div onClick={handleClick} data-color={'tomato'}></div>
+      <div onClick={handleClick} data-color={'lighskyblue'}></div>
+      <div onClick={handleClick} data-color={'lightgreen'}></div>
+      <div onClick={handleClick} data-color={'lightsalmon'}></div>
+    </div>
+  );
+}
+
+function PaletteIcon(props) {
+  const [renderPaletteModal, setRenderpalette] = useState(false);
+  const handleClick = () => setRenderpalette((state) => !state);
+
+  return (
+    <div onClick={handleClick}>
+      <Icon title='palette' icon={paletteIcon} />
+      {renderPaletteModal && <PaletteModal id={props.id} editNote={props.editNote}/>}
     </div>
   );
 }
@@ -81,10 +94,10 @@ function Controlls(props) {
   return (
     <div className={styles.controlls}>
       <CloseModalIcon close={props.close} />
-      <TagIcon />
       <div>
-        <Icon title='palette' icon={paletteIcon} />
+        <Icon title='tag' icon={tagIcon} />
       </div>
+      <PaletteIcon id={props.id} editNote={props.editNote} />
       <div>
         <Icon title='picture' icon={pictureIcon} />
       </div>
@@ -110,9 +123,18 @@ function EditNote(props) {
   return (
     <div className={styles.wrap}>
       <div style={{ background: color }} className={styles.form}>
-        <Controlls close={props.close} />
-        <TitleInput id={props.id} title={title} editNote={props.editNote} />
-        <TextAreaInput id={props.id} text={text} editNote={props.editNote} />
+        <Controlls
+          id={props.id}
+          data={props.data[props.id]}
+          editNote={props.editNote}
+          close={props.close}
+        />
+        <Inputs
+          id={props.id}
+          title={title}
+          text={text}
+          editNote={props.editNote}
+        />
         <div className={styles.tagList}>
           {tags.map((tag) => (
             <TagedItem key={tag} title={tag} />

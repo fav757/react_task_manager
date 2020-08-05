@@ -4,19 +4,19 @@ import Note from '../Note/Note';
 import { connect } from 'react-redux';
 
 function Workspace(props) {
-  const notes = props.notesDatabase.map((note, index) => {
-    return <Note key={index} id={index} />
-  });
-
   return (
     <div className={styles.wrap}>
       <div className={styles.notesGrid}>
-        {notes}
+        {props.notesDatabase.map((note, index) => {
+          return <Note key={index} id={index}/>;
+        })}
       </div>
     </div>
   );
 }
 
-const mapStateToProps = (state) => ({notesDatabase: state['workspaceReducer']});
+const mapStateToProps = (state) => ({
+  notesDatabase: state['workspaceReducer'],
+});
 
 export default connect(mapStateToProps)(Workspace);

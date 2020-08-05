@@ -19,7 +19,7 @@
   overflow: hidden;
   border-radius: 1rem;
   background: white;
-  box-shadow: 0 0 5px lightgray;
+  box-shadow: 0 0 7px #333;
 }
 
 .input {
@@ -45,4 +45,41 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.paletteModal {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 0 5px lightgray;
+  border-radius: 0.3rem;
+}
+
+.paletteModal div {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.paletteModal div[data-color="lightpink"] {
+  background: lightpink;
+}
+
+.paletteModal div[data-color="tomato"] {
+  background: tomato;
+}
+
+.paletteModal div[data-color="lighskyblue"] {
+  background: lightskyblue;
+}
+
+.paletteModal div[data-color="lightgreen"] {
+  background: lightgreen;
+}
+
+.paletteModal div[data-color="lightsalmon"] {
+  background: lightsalmon;
 }

@@ -18,6 +18,7 @@ const initialState = [
 ];
 
 function workspaceReducer(state = initialState, action) {
+  console.log(state);
   switch (action.type) {
     case ADD_NOTE:
       return [...state, action.payload];
