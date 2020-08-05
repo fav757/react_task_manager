@@ -43,7 +43,7 @@ function Inputs(props) {
 function CloseModalIcon(props) {
   useEffect(() => {
     const closeModal = (event) => {
-      if (!event.target.closest('.' + styles.form)) {
+      if (event.target.classList.contains(styles.wrap)) {
         props.close();
       }
     };
@@ -71,7 +71,7 @@ function PaletteModal(props) {
     <div className={styles.paletteModal}>
       <div onClick={handleClick} data-color={'lightpink'}></div>
       <div onClick={handleClick} data-color={'tomato'}></div>
-      <div onClick={handleClick} data-color={'lighskyblue'}></div>
+      <div onClick={handleClick} data-color={'lightskyblue'}></div>
       <div onClick={handleClick} data-color={'lightgreen'}></div>
       <div onClick={handleClick} data-color={'lightsalmon'}></div>
     </div>
