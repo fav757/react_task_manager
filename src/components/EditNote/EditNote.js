@@ -13,15 +13,45 @@ import tasksIcon from './tasks_icon.svg';
 import pinIcon from './pin_icon.svg';
 import { editNote } from '../Workspace/workspaceActions';
 
-function EditNote(props) {
-  const { title, text, tags, color } = props.data[props.id];
-  const handleChange = (event) =>
+function TitleInput(props) {
+  const handleChange = (event) => {
     props.editNote({
       id: props.id,
       property: event.target.name,
       value: event.target.value,
     });
+  };
 
+  return (
+    <input
+      onChange={handleChange}
+      value={props.title}
+      className={styles.input}
+      name='title'
+    />
+  );
+}
+
+function TextAreaInput(props) {
+  const handleChange = (event) => {
+    props.editNote({
+      id: props.id,
+      property: event.target.name,
+      value: event.target.value,
+    });
+  };
+
+  return (
+    <textarea
+      onChange={handleChange}
+      defaultValue={props.text}
+      className={styles.input}
+      name='text'
+    />
+  );
+}
+
+function CloseModalIcon(props) {
   useEffect(() => {
     const closeModal = (event) => {
       if (!event.target.closest('.' + styles.form)) {
@@ -33,52 +63,62 @@ function EditNote(props) {
   }, []);
 
   return (
+    <div onClick={props.close}>
+      <Icon title='back' icon={backIcon} />
+    </div>
+  );
+}
+
+function TagIcon() {
+  return (
+    <div>
+      <Icon title='tag' icon={tagIcon} />
+    </div>
+  );
+}
+
+function Controlls(props) {
+  return (
+    <div className={styles.controlls}>
+      <CloseModalIcon close={props.close} />
+      <TagIcon />
+      <div>
+        <Icon title='palette' icon={paletteIcon} />
+      </div>
+      <div>
+        <Icon title='picture' icon={pictureIcon} />
+      </div>
+      <div>
+        <Icon title='tasks' icon={tasksIcon} />
+      </div>
+      <div>
+        <Icon title='archive' icon={archiveIcon} />
+      </div>
+      <div>
+        <Icon title='delete' icon={deleteIcon} />
+      </div>
+      <div>
+        <Icon title='pin' icon={pinIcon} />
+      </div>
+    </div>
+  );
+}
+
+function EditNote(props) {
+  const { title, text, tags, color } = props.data[props.id];
+
+  return (
     <div className={styles.wrap}>
-      <form style={{ background: color }} className={styles.form}>
-        <div className={styles.controlls}>
-          <div onClick={props.close}>
-            <Icon title='back' icon={backIcon} />
-          </div>
-          <div>
-            <Icon title='tag' icon={tagIcon} />
-          </div>
-          <div>
-            <Icon title='palette' icon={paletteIcon} />
-          </div>
-          <div>
-            <Icon title='picture' icon={pictureIcon} />
-          </div>
-          <div>
-            <Icon title='tasks' icon={tasksIcon} />
-          </div>
-          <div>
-            <Icon title='archive' icon={archiveIcon} />
-          </div>
-          <div>
-            <Icon title='delete' icon={deleteIcon} />
-          </div>
-          <div>
-            <Icon title='pin' icon={pinIcon} />
-          </div>
-        </div>
-        <input
-          onChange={handleChange}
-          value={title}
-          className={styles.input}
-          name='title'
-        />
-        <textarea
-          onChange={handleChange}
-          defaultValue={text}
-          className={styles.input}
-          name='text'
-        />
+      <div style={{ background: color }} className={styles.form}>
+        <Controlls close={props.close} />
+        <TitleInput id={props.id} title={title} editNote={props.editNote} />
+        <TextAreaInput id={props.id} text={text} editNote={props.editNote} />
         <div className={styles.tagList}>
           {tags.map((tag) => (
             <TagedItem key={tag} title={tag} />
           ))}
         </div>
-      </form>
+      </div>
     </div>
   );
 }
