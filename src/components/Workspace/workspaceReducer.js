@@ -5,9 +5,9 @@ import notePlaceholder2 from './notePlaceholder2.jpg';
 const initialState = [
   {
     images: [notePlaceholder1, notePlaceholder2],
-    title: 'buy milk',
-    text: 'tomorow will be promotion',
-    tags: ['home'],
+    title: 'Inital note',
+    text: 'This is the your first note provided to test application',
+    tags: ['home', 'work'],
     color: 'lightskyblue',
     system: 'all',
   }

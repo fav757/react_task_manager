@@ -36,12 +36,24 @@ function CloseModalIcon(props) {
 }
 
 function TagsModal(props) {
+  const removeTag = (event) => {
+    const newTags = props.tags.filter(
+      (item) => item !== event.target.dataset.connectedTag
+    );
+
+    props.editNote({
+      id: props.id,
+      property: 'tags',
+      value: newTags,
+    });
+  };
+
   return (
     <div className={styles.tagsModal}>
       {props.tags.map((tag) => (
         <div key={tag}>
-        <TagedItem title={tag} />
-        <button>remove</button>
+          <TagedItem title={tag} />
+          <button onClick={removeTag} data-connected-tag={tag}>remove</button>
         </div>
       ))}
     </div>
@@ -50,7 +62,7 @@ function TagsModal(props) {
 
 function TagsIcon(props) {
   const [renderModal, setRenderModal] = useState(false);
-  const handleClick = () => setRenderModal(state => !state);
+  const handleClick = () => setRenderModal((state) => !state);
 
   return (
     <div>
@@ -58,11 +70,7 @@ function TagsIcon(props) {
         <Icon title='tag' icon={tagIcon} />
       </div>
       {renderModal && (
-        <TagsModal
-          id={props.id}
-          editNote={props.editNote}
-          tags={props.tags}
-        />
+        <TagsModal id={props.id} editNote={props.editNote} tags={props.tags} />
       )}
     </div>
   );
@@ -151,7 +159,11 @@ function Controlls(props) {
   return (
     <div className={styles.controlls}>
       <CloseModalIcon close={props.close} />
-      <TagsIcon id={props.id} editNote={props.editNote} tags={props.data.tags} />
+      <TagsIcon
+        id={props.id}
+        editNote={props.editNote}
+        tags={props.data.tags}
+      />
       <PaletteIcon id={props.id} editNote={props.editNote} />
       <AddPictureIcon
         id={props.id}
