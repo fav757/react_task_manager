@@ -178,11 +178,28 @@ function AddToArchive(props) {
       value: 'arhived',
     });
     props.close();
-  }
+  };
 
   return (
     <div onClick={handleClick}>
       <Icon title='archive' icon={archiveIcon} />
+    </div>
+  );
+}
+
+function AddToDeleted(props) {
+  const handleClick = () => {
+    props.editNote({
+      id: props.id,
+      property: 'system',
+      value: 'deleted',
+    });
+    props.close();
+  };
+
+  return (
+    <div onClick={handleClick}>
+      <Icon title='delete' icon={deleteIcon} />
     </div>
   );
 }
@@ -197,18 +214,20 @@ function Controlls(props) {
         tags={props.data.tags}
       />
       <PaletteIcon id={props.id} editNote={props.editNote} />
-      <AddPictureIcon
-        
-        images={props.data.images}
-        editNote={props.editNote}
-      />
+      <AddPictureIcon images={props.data.images} editNote={props.editNote} />
       <div>
         <Icon title='tasks' icon={tasksIcon} />
       </div>
-      <AddToArchive id={props.id} editNote={props.editNote} close={props.close} />
-      <div>
-        <Icon title='delete' icon={deleteIcon} />
-      </div>
+      <AddToArchive
+        id={props.id}
+        editNote={props.editNote}
+        close={props.close}
+      />
+      <AddToDeleted
+        id={props.id}
+        editNote={props.editNote}
+        close={props.close}
+      />
       <div>
         <Icon title='pin' icon={pinIcon} />
       </div>
