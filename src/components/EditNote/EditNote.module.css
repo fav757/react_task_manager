@@ -101,3 +101,7 @@
   flex-flow: column nowrap;
   gap: 1rem;
 }
+
+.deleteImgIcon {
+  position: absolute;
+}

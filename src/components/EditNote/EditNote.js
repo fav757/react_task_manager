@@ -126,6 +126,21 @@ function Controlls(props) {
   );
 }
 
+function ImagesSector(props) {
+  return (
+    <div className={styles.imagesSector}>
+      {props.images.map((image) => (
+        <div key={image + Math.random()}>
+          <div className={styles.deleteImgIcon}>
+            <Icon title='delete' icon={deleteIcon} />
+          </div>
+          <img src={image} alt='note image' />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function EditNote(props) {
   const { images, title, text, tags, color } = props.data[props.id];
 
@@ -139,11 +154,7 @@ function EditNote(props) {
           close={props.close}
         />
         <div className={styles.formMainSector}>
-          <div className={styles.imagesSector}>
-            {images.map((image) => (
-              <img src={image} alt='note image' key={Math.random()} />
-            ))}
-          </div>
+          <ImagesSector images={images} editNote={props.editNote} />
           <Inputs
             id={props.id}
             title={title}
