@@ -48,6 +48,17 @@ function TagsModal(props) {
     });
   };
 
+  const [newTag, setNewTag] = useState('');
+  const handleChange = (event) => setNewTag(event.target.value);
+
+  const addTag = () => {
+    props.editNote({
+      id: props.id,
+      property: 'tags',
+      value: [...props.tags, newTag],
+    });
+  };
+
   return (
     <div className={styles.tagsModal}>
       {props.tags.map((tag) => (
@@ -56,6 +67,8 @@ function TagsModal(props) {
           <button onClick={removeTag} data-connected-tag={tag}>remove</button>
         </div>
       ))}
+      <input value={newTag} onChange={handleChange} placeholder='your tag' />
+      <button onClick={addTag}>Add</button>
     </div>
   );
 }

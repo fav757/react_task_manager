@@ -126,6 +126,7 @@
 .tagsModal {
   display: flex;
   flex-flow: column nowrap;
+  gap: 0.4rem;
   position: absolute;
   z-index: 999;
   padding: 1rem;
@@ -136,8 +137,5 @@
 
 .tagsModal div {
   display: flex;
-}
-
-.tagsModal button {
-  margin-left: 1rem;
+  justify-content: space-between;
 }
