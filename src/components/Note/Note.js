@@ -16,9 +16,7 @@ function Note(props) {
         style={{ background: color }}
         className={styles.wrap}
       >
-        {images.map((image) => (
-          <img src={image} alt='note image' />
-        ))}
+        {images.length ? <img src={images[0]} alt='note image' /> : null}
         <h3 className={styles.header}>{title}</h3>
         <div>{text}</div>
         <div className={styles.tags}>

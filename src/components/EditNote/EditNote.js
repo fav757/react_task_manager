@@ -92,7 +92,9 @@ function PaletteIcon(props) {
   return (
     <div onClick={handleClick}>
       <Icon title='palette' icon={paletteIcon} />
-      {renderPaletteModal && <PaletteModal id={props.id} editNote={props.editNote}/>}
+      {renderPaletteModal && (
+        <PaletteModal id={props.id} editNote={props.editNote} />
+      )}
     </div>
   );
 }
@@ -125,7 +127,7 @@ function Controlls(props) {
 }
 
 function EditNote(props) {
-  const { title, text, tags, color } = props.data[props.id];
+  const { images, title, text, tags, color } = props.data[props.id];
 
   return (
     <div className={styles.wrap}>
@@ -136,12 +138,19 @@ function EditNote(props) {
           editNote={props.editNote}
           close={props.close}
         />
-        <Inputs
-          id={props.id}
-          title={title}
-          text={text}
-          editNote={props.editNote}
-        />
+        <div className={styles.formMainSector}>
+          <div className={styles.imagesSector}>
+            {images.map((image) => (
+              <img src={image} alt='note image' key={Math.random()} />
+            ))}
+          </div>
+          <Inputs
+            id={props.id}
+            title={title}
+            text={text}
+            editNote={props.editNote}
+          />
+        </div>
         <div className={styles.tagList}>
           {tags.map((tag) => (
             <TagedItem key={tag} title={tag} />
