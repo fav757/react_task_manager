@@ -4,7 +4,7 @@ import styles from './EditNote.module.css';
 function Inputs(props) {
   const handleChange = (event) => {
     if (event.target.offsetHeight < event.target.scrollHeight) {
-      event.target.rows = +event.target.rows + 1;
+      event.target.rows = +event.target.rows + 2;
     }
     
     props.editNote({

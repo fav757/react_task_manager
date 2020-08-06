@@ -122,3 +122,22 @@
   box-shadow: 0 0 5px gray;
   border-radius: 0.3rem;
 }
+
+.tagsModal {
+  display: flex;
+  flex-flow: column nowrap;
+  position: absolute;
+  z-index: 999;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 0 5px gray;
+  border-radius: 0.3rem;
+}
+
+.tagsModal div {
+  display: flex;
+}
+
+.tagsModal button {
+  margin-left: 1rem;
+}

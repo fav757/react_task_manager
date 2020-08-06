@@ -9,6 +9,7 @@ import pictureIcon from './picture_icon.svg';
 import tasksIcon from './tasks_icon.svg';
 import pinIcon from './pin_icon.svg';
 import deleteIcon from './deleted_icon.svg';
+import TagedItem from '../TagedItem/TagedItem';
 
 function CloseModalIcon(props) {
   useEffect(() => {
@@ -30,6 +31,39 @@ function CloseModalIcon(props) {
   return (
     <div onClick={props.close}>
       <Icon title='back' icon={backIcon} />
+    </div>
+  );
+}
+
+function TagsModal(props) {
+  return (
+    <div className={styles.tagsModal}>
+      {props.tags.map((tag) => (
+        <div key={tag}>
+        <TagedItem title={tag} />
+        <button>remove</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TagsIcon(props) {
+  const [renderModal, setRenderModal] = useState(false);
+  const handleClick = () => setRenderModal(state => !state);
+
+  return (
+    <div>
+      <div onClick={handleClick}>
+        <Icon title='tag' icon={tagIcon} />
+      </div>
+      {renderModal && (
+        <TagsModal
+          id={props.id}
+          editNote={props.editNote}
+          tags={props.tags}
+        />
+      )}
     </div>
   );
 }
@@ -117,9 +151,7 @@ function Controlls(props) {
   return (
     <div className={styles.controlls}>
       <CloseModalIcon close={props.close} />
-      <div>
-        <Icon title='tag' icon={tagIcon} />
-      </div>
+      <TagsIcon id={props.id} editNote={props.editNote} tags={props.data.tags} />
       <PaletteIcon id={props.id} editNote={props.editNote} />
       <AddPictureIcon
         id={props.id}
