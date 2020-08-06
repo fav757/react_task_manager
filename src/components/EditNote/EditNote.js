@@ -127,11 +127,26 @@ function Controlls(props) {
 }
 
 function ImagesSector(props) {
+  const handleClick = (event) => {
+    const newImgSet = props.images.filter(
+      (item) => item !== event.currentTarget.dataset.connectedImage
+    );
+    props.editNote({
+      id: props.id,
+      property: 'images',
+      value: newImgSet,
+    });
+  };
+
   return (
     <div className={styles.imagesSector}>
       {props.images.map((image) => (
         <div key={image + Math.random()}>
-          <div className={styles.deleteImgIcon}>
+          <div
+            data-connected-image={image}
+            onClick={handleClick}
+            className={styles.deleteImgIcon}
+          >
             <Icon title='delete' icon={deleteIcon} />
           </div>
           <img src={image} alt='note image' />
@@ -154,7 +169,11 @@ function EditNote(props) {
           close={props.close}
         />
         <div className={styles.formMainSector}>
-          <ImagesSector images={images} editNote={props.editNote} />
+          <ImagesSector
+            images={images}
+            editNote={props.editNote}
+            id={props.id}
+          />
           <Inputs
             id={props.id}
             title={title}

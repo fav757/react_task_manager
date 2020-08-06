@@ -1,9 +1,10 @@
 import { ADD_NOTE, EDIT_NOTE } from './workspaceActions';
-import notePlaceholder from './notePlaceholder.jpg';
+import notePlaceholder1 from './notePlaceholder1.jpg';
+import notePlaceholder2 from './notePlaceholder2.jpg';
 
 const initialState = [
   {
-    images: [notePlaceholder, notePlaceholder],
+    images: [notePlaceholder1, notePlaceholder2],
     title: 'buy milk',
     text: 'tomorow will be promotion',
     tags: ['home'],
@@ -13,7 +14,6 @@ const initialState = [
 ];
 
 function workspaceReducer(state = initialState, action) {
-  console.log(state);
   switch (action.type) {
     case ADD_NOTE:
       return [...state, action.payload];
