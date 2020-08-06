@@ -50,6 +50,7 @@
 
 .paletteModal {
   position: absolute;
+  z-index: 999;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
@@ -103,6 +104,21 @@
   gap: 1rem;
 }
 
+.imagesSector img {
+  width: 100%;
+}
+
 .deleteImgIcon {
   position: absolute;
+}
+
+.addPictureModal {
+  display: flex;
+  flex-flow: column nowrap;
+  position: absolute;
+  z-index: 999;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 0 5px gray;
+  border-radius: 0.3rem;
 }

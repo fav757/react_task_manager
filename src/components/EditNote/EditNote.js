@@ -99,6 +99,50 @@ function PaletteIcon(props) {
   );
 }
 
+function AddPictureModal(props) {
+  const [link, setLink] = useState('');
+  const handleChange = (event) => setLink(event.target.value);
+  const handleClick = () => {
+    props.editNote({
+      id: props.id,
+      property: 'images',
+      value: [...props.images, link],
+    });
+    props.setRenderModal(false);
+  };
+
+  return (
+    <div className={styles.addPictureModal}>
+      <input
+        value={link}
+        onChange={handleChange}
+        placeholder='link to picture'
+      />
+      <button onClick={handleClick}>Done</button>
+    </div>
+  );
+}
+
+function AddPictureIcon(props) {
+  const [renderModal, setRenderModal] = useState(false);
+
+  return (
+    <div>
+      <div onClick={() => setRenderModal(!renderModal)}>
+        <Icon title='picture' icon={pictureIcon} />
+      </div>
+      {renderModal && (
+        <AddPictureModal
+          id={props.id}
+          images={props.images}
+          editNote={props.editNote}
+          setRenderModal={setRenderModal}
+        />
+      )}
+    </div>
+  );
+}
+
 function Controlls(props) {
   return (
     <div className={styles.controlls}>
@@ -107,9 +151,11 @@ function Controlls(props) {
         <Icon title='tag' icon={tagIcon} />
       </div>
       <PaletteIcon id={props.id} editNote={props.editNote} />
-      <div>
-        <Icon title='picture' icon={pictureIcon} />
-      </div>
+      <AddPictureIcon
+        id={props.id}
+        images={props.data.images}
+        editNote={props.editNote}
+      />
       <div>
         <Icon title='tasks' icon={tasksIcon} />
       </div>
