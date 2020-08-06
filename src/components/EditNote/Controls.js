@@ -64,7 +64,9 @@ function TagsModal(props) {
       {props.tags.map((tag) => (
         <div key={tag}>
           <TagedItem title={tag} />
-          <button onClick={removeTag} data-connected-tag={tag}>remove</button>
+          <button onClick={removeTag} data-connected-tag={tag}>
+            remove
+          </button>
         </div>
       ))}
       <input value={newTag} onChange={handleChange} placeholder='your tag' />
@@ -168,6 +170,23 @@ function AddPictureIcon(props) {
   );
 }
 
+function AddToArchive(props) {
+  const handleClick = () => {
+    props.editNote({
+      id: props.id,
+      property: 'system',
+      value: 'arhived',
+    });
+    props.close();
+  }
+
+  return (
+    <div onClick={handleClick}>
+      <Icon title='archive' icon={archiveIcon} />
+    </div>
+  );
+}
+
 function Controlls(props) {
   return (
     <div className={styles.controlls}>
@@ -179,16 +198,14 @@ function Controlls(props) {
       />
       <PaletteIcon id={props.id} editNote={props.editNote} />
       <AddPictureIcon
-        id={props.id}
+        
         images={props.data.images}
         editNote={props.editNote}
       />
       <div>
         <Icon title='tasks' icon={tasksIcon} />
       </div>
-      <div>
-        <Icon title='archive' icon={archiveIcon} />
-      </div>
+      <AddToArchive id={props.id} editNote={props.editNote} close={props.close} />
       <div>
         <Icon title='delete' icon={deleteIcon} />
       </div>
