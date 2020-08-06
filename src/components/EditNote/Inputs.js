@@ -3,6 +3,10 @@ import styles from './EditNote.module.css';
 
 function Inputs(props) {
   const handleChange = (event) => {
+    if (event.target.offsetHeight < event.target.scrollHeight) {
+      event.target.rows = +event.target.rows + 1;
+    }
+    
     props.editNote({
       id: props.id,
       property: event.target.name,

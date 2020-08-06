@@ -9,6 +9,11 @@
 
 .header {
   margin: 0;
+  overflow-wrap: break-word;
+}
+
+.text {
+  overflow-wrap: break-word;
 }
 
 .tags {

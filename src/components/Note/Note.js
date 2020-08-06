@@ -18,7 +18,7 @@ function Note(props) {
       >
         {images.length ? <img src={images[0]} alt='note image' /> : null}
         <h3 className={styles.header}>{title}</h3>
-        <div>{text}</div>
+        <div className={styles.text}>{text}</div>
         <div className={styles.tags}>
           {tags.map((tag) => (
             <TagedItem key={tag} title={tag} />

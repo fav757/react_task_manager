@@ -26,7 +26,7 @@ function ImagesSector(props) {
           >
             <Icon title='delete' icon={deleteIcon} />
           </div>
-          <img src={image} alt='note image' />
+          <img src={image} alt='looks like your URL consists mistake' />
         </div>
       ))}
     </div>
