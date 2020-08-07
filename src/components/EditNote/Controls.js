@@ -204,6 +204,22 @@ function AddToDeleted(props) {
   );
 }
 
+function PinNote(props) {
+  const handleClick = () => {
+    props.editNote({
+      id: props.id,
+      property: 'isPinned',
+      value: !props.isPinned,
+    });
+  };
+
+  return (
+    <div onClick={handleClick}>
+      <Icon title='pin' icon={pinIcon} />
+    </div>
+  );
+}
+
 function Controlls(props) {
   return (
     <div className={styles.controlls}>
@@ -228,9 +244,7 @@ function Controlls(props) {
         editNote={props.editNote}
         close={props.close}
       />
-      <div>
-        <Icon title='pin' icon={pinIcon} />
-      </div>
+      <PinNote id={props.id} editNote={props.editNote} isPinned={props.data.isPinned} />
     </div>
   );
 }
