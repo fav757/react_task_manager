@@ -17,7 +17,7 @@ const initialState = [
     images: [notePlaceholder2],
     title: 'Inital note 2',
     text: 'This is the your second note provided to test application',
-    tags: ['home', 'work'],
+    tags: ['home', 'study'],
     color: 'lightgreen',
     system: 'all',
   }

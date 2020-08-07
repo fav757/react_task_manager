@@ -16,27 +16,38 @@ function SystemTags() {
   );
 }
 
-function UserTags() {
+function UserTags(props) {
+  const tags = new Set();
+  props.database.forEach((note) => {
+    note.tags.forEach((tag) => tags.add(tag));
+  });
+
   return (
     <div className={styles.section}>
-      <TagedItem title='Home' />
-      <TagedItem title='Study' />
-      <TagedItem title='Music' />
+      <div>
+        {Array.from(tags).map((tag) => (
+          <TagedItem key={tag} title={tag} />
+        ))}
+      </div>
     </div>
   );
 }
 
 function Sidemenu(props) {
   return (
-    <aside style={{display: props.renderMenu? 'none' : ''}} className={styles.wrap}>
+    <aside
+      style={{ display: props.renderMenu ? 'none' : '' }}
+      className={styles.wrap}
+    >
       <SystemTags />
-      <UserTags />
+      <UserTags database={props.database} />
     </aside>
   );
 }
 
 const mapStateToProps = (state) => ({
   renderMenu: state.headerReducer.menuIsOpen,
+  database: state.workspaceReducer,
 });
 
 export default connect(mapStateToProps)(Sidemenu);
