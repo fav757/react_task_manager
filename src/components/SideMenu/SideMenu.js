@@ -5,13 +5,24 @@ import archiveIcon from './archive_icon.svg';
 import deletedIcon from './deleted_icon.svg';
 import TagedItem from '../TagedItem/TagedItem';
 import { connect } from 'react-redux';
+import { setSystemTag, setUserTag } from './sideMenuActions';
 
-function SystemTags() {
+function SystemTags(props) {
+  const handleClick = (event) => {
+    props.setSystemTag(event.currentTarget.dataset.tag);
+  };
+
   return (
     <div className={styles.section}>
-      <TagedItem title='Notes' icon={noteIcon} />
-      <TagedItem title='Archive' icon={archiveIcon} />
-      <TagedItem title='Deleted' icon={deletedIcon} />
+      <div onClick={handleClick} data-tag='notes'>
+        <TagedItem title='notes' icon={noteIcon} />
+      </div>
+      <div onClick={handleClick} data-tag='archived'>
+        <TagedItem title='archived' icon={archiveIcon} />
+      </div>
+      <div onClick={handleClick} data-tag='deleted'>
+        <TagedItem title='deleted' icon={deletedIcon} />
+      </div>
     </div>
   );
 }
@@ -33,13 +44,13 @@ function UserTags(props) {
   );
 }
 
-function Sidemenu(props) {
+function Sidemenu(props) {;
   return (
     <aside
       style={{ display: props.renderMenu ? 'none' : '' }}
       className={styles.wrap}
     >
-      <SystemTags />
+      <SystemTags setSystemTag={props.setSystemTag} />
       <UserTags database={props.database} />
     </aside>
   );
@@ -50,4 +61,9 @@ const mapStateToProps = (state) => ({
   database: state.workspaceReducer,
 });
 
-export default connect(mapStateToProps)(Sidemenu);
+const mapDispatchToProps = (dispatch) => ({
+  setSystemTag: (value) => dispatch(setSystemTag(value)),
+  setUserTag: (value) => dispatch(setUserTag(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidemenu);

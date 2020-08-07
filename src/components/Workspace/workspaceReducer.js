@@ -10,7 +10,7 @@ const initialState = [
     text: 'This is the your first note provided to test application',
     tags: ['home', 'work'],
     color: 'lightskyblue',
-    system: 'all',
+    system: 'notes',
   },
   {
     isPinned: true,
@@ -19,7 +19,7 @@ const initialState = [
     text: 'This is the your second note provided to test application',
     tags: ['home', 'study'],
     color: 'lightgreen',
-    system: 'all',
+    system: 'archived',
   }
 ];
 
