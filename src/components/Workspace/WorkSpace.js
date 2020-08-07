@@ -11,7 +11,8 @@ function Workspace(props) {
       note.isPinned &&
       (note.text.includes(props.searchQuery) ||
         note.title.includes(props.searchQuery)) &&
-      note.system === props.systemTag
+      note.system === props.systemTag &&
+      note.tags.includes(props.userTag)
     ) {
       return <Note key={index} id={index} />;
     }
@@ -22,7 +23,8 @@ function Workspace(props) {
       !note.isPinned &&
       (note.text.includes(props.searchQuery) ||
         note.title.includes(props.searchQuery)) &&
-      note.system === props.systemTag
+      note.system === props.systemTag &&
+      note.tags.includes(props.userTag)
     ) {
       return <Note key={index} id={index} />;
     }
@@ -44,6 +46,7 @@ const mapStateToProps = (state) => ({
   notesDatabase: state.workspaceReducer,
   searchQuery: state.headerReducer.searchQuery,
   systemTag: state.sideMenuReducer.systemTag,
+  userTag: state.sideMenuReducer.userTag,
 });
 
 export default connect(mapStateToProps)(Workspace);

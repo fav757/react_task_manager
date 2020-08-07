@@ -33,25 +33,29 @@ function UserTags(props) {
     note.tags.forEach((tag) => tags.add(tag));
   });
 
+  const handleClick = (event) => {
+    props.setUserTag(event.currentTarget.dataset.tag);
+  };
+
   return (
     <div className={styles.section}>
-      <div>
-        {Array.from(tags).map((tag) => (
-          <TagedItem key={tag} title={tag} />
-        ))}
-      </div>
+      {Array.from(tags).map((tag) => (
+        <div key={tag} data-tag={tag} onClick={handleClick}>
+          <TagedItem title={tag} />
+        </div>
+      ))}
     </div>
   );
 }
 
-function Sidemenu(props) {;
+function Sidemenu(props) {
   return (
     <aside
       style={{ display: props.renderMenu ? 'none' : '' }}
       className={styles.wrap}
     >
       <SystemTags setSystemTag={props.setSystemTag} />
-      <UserTags database={props.database} />
+      <UserTags database={props.database} setUserTag={props.setUserTag} />
     </aside>
   );
 }
