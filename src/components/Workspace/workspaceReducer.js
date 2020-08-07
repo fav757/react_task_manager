@@ -16,7 +16,7 @@ const initialState = [
     isPinned: true,
     images: [notePlaceholder2],
     title: 'Inital note 2',
-    text: 'This is the your first note provided to test application',
+    text: 'This is the your second note provided to test application',
     tags: ['home', 'work'],
     color: 'lightgreen',
     system: 'all',

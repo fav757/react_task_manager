@@ -6,32 +6,41 @@ import Icon from '../Icon/Icon';
 import pinIcon from './pin_icon.svg';
 
 function Workspace(props) {
+  const pinnedNotes = props.notesDatabase.map((note, index) => {
+    if (
+      note.isPinned &&
+      (note.text.includes(props.searchQuery) ||
+        note.title.includes(props.searchQuery))
+    ) {
+      return <Note key={index} id={index} />;
+    }
+  });
+
+  const notPinnedNotes = props.notesDatabase.map((note, index) => {
+    if (
+      !note.isPinned &&
+      (note.text.includes(props.searchQuery) ||
+        note.title.includes(props.searchQuery))
+    ) {
+      return <Note key={index} id={index} />;
+    }
+  });
+
   return (
     <div className={styles.wrap}>
       <div className={styles.pinnedHeader}>
         <Icon icon={pinIcon} title='pin' />
         <h3>Pinned notes:</h3>
       </div>
-      <div className={styles.notesGrid}>
-        {props.notesDatabase.map((note, index) => {
-          if (note.isPinned) {
-            return <Note key={index} id={index} />;
-          }
-        })}
-      </div>
-      <div className={styles.notesGrid}>
-        {props.notesDatabase.map((note, index) => {
-          if (!note.isPinned) {
-            return <Note key={index} id={index} />;
-          }
-        })}
-      </div>
+      <div className={styles.notesGrid}>{pinnedNotes}</div>
+      <div className={styles.notesGrid}>{notPinnedNotes}</div>
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
-  notesDatabase: state['workspaceReducer'],
+  notesDatabase: state.workspaceReducer,
+  searchQuery: state.headerReducer.searchQuery,
 });
 
 export default connect(mapStateToProps)(Workspace);
