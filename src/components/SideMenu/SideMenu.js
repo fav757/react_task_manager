@@ -4,6 +4,7 @@ import noteIcon from './note_icon.svg';
 import archiveIcon from './archive_icon.svg';
 import deletedIcon from './deleted_icon.svg';
 import TagedItem from '../TagedItem/TagedItem';
+import { connect } from 'react-redux';
 
 function SystemTags() {
   return (
@@ -25,13 +26,17 @@ function UserTags() {
   );
 }
 
-function Sidemenu() {
+function Sidemenu(props) {
   return (
-    <aside className={styles.wrap}>
+    <aside style={{display: props.renderMenu? 'none' : ''}} className={styles.wrap}>
       <SystemTags />
       <UserTags />
     </aside>
   );
 }
 
-export default Sidemenu;
+const mapStateToProps = (state) => ({
+  renderMenu: state.headerReducer.menuIsOpen,
+});
+
+export default connect(mapStateToProps)(Sidemenu);

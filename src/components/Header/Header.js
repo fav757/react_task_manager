@@ -5,9 +5,11 @@ import AuthorCard from '../AuthorCard/AuthorCard';
 import burgerIcon from './burger_icon.svg';
 import Icon from '../Icon/Icon';
 import logoIcon from './logo_placeholder.png';
+import { connect } from 'react-redux';
+import { toggleSideMenu } from './headerActions';
 
-function BurgerButton() {
-  const handleClick = () => alert('works');
+function BurgerButton(props) {
+  const handleClick = () => props.toglleMenu();
 
   return (
     <div onClick={handleClick}>
@@ -25,10 +27,10 @@ function Logo() {
   );
 }
 
-function Header() {
+function Header(props) {
   return (
     <header className={styles.wrap}>
-      <BurgerButton />
+      <BurgerButton toglleMenu={props.toglleMenu}/>
       <Logo />
       <SearchPanel />
       <AuthorCard />
@@ -36,4 +38,8 @@ function Header() {
   );
 }
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+  toglleMenu: () => dispatch(toggleSideMenu)
+});
+
+export default connect(null, mapDispatchToProps)(Header);
