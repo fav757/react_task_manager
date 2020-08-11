@@ -6,9 +6,10 @@ import { editNote } from '../Workspace/workspaceActions';
 import Inputs from './Inputs';
 import Controlls from './Controls';
 import ImagesSector from './ImagesSector';
+import TaskList from './TaskList';
 
 function EditNote(props) {
-  const { images, title, text, tags, color } = props.data[props.id];
+  const { images, title, tasks, text, tags, color } = props.data[props.id];
 
   return (
     <div className={styles.wrap}>
@@ -25,6 +26,7 @@ function EditNote(props) {
             editNote={props.editNote}
             id={props.id}
           />
+          {tasks.length ? <TaskList tasks={tasks} /> : null}
           <Inputs
             id={props.id}
             title={title}

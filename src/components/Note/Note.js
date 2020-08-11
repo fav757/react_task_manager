@@ -5,7 +5,7 @@ import TagedItem from '../TagedItem/TagedItem';
 import { connect } from 'react-redux';
 
 function Note(props) {
-  const { images, title, text, tags, color } = props.data[props.id];
+  const { images, title, tasks, text, tags, color } = props.data[props.id];
   const [renderEdit, setRenderEdit] = useState(false);
   const handleClick = () => setRenderEdit((state) => !state);
 
@@ -18,6 +18,17 @@ function Note(props) {
       >
         {images.length ? <img src={images[0]} alt='note' /> : null}
         <h3 className={styles.header}>{title}</h3>
+        {tasks.length ? (
+          <ul className={styles.tasksList}>
+            {tasks.map((task) => (
+              <li key={task}>
+                <input disabled type='checkbox' />
+                {task}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
         <div className={styles.text}>{text}</div>
         <div className={styles.tags}>
           {tags.map((tag) => (

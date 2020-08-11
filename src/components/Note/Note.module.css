@@ -21,3 +21,9 @@
   flex-flow: row wrap;
   border-top: 1px solid ghostwhite;
 }
+
+.tasksList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
