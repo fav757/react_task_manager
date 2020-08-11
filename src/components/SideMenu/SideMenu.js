@@ -37,17 +37,21 @@ function UserTags(props) {
     note.tags.forEach((tag) => tags.add(tag));
   });
 
+  const style = (tag) => ({
+    background: props.userTag === tag ? 'lavender' : '',
+  });
+
   const handleClick = (event) => {
     props.setUserTag(event.currentTarget.dataset.tag);
   };
 
   return (
     <div className={styles.section}>
-      <div data-tag={'all'} onClick={handleClick}>
+      <div style={style('all')} data-tag={'all'} onClick={handleClick}>
         <TagedItem title={'all'} />
       </div>
       {Array.from(tags).map((tag) => (
-        <div key={tag} data-tag={tag} onClick={handleClick}>
+        <div style={style(tag)} key={tag} data-tag={tag} onClick={handleClick}>
           <TagedItem title={tag} />
         </div>
       ))}
@@ -65,7 +69,7 @@ function Sidemenu(props) {
         setSystemTag={props.setSystemTag}
         systemTag={props.systemTag}
       />
-      <UserTags database={props.database} setUserTag={props.setUserTag} />
+      <UserTags userTag={props.userTag} database={props.database} setUserTag={props.setUserTag} />
     </aside>
   );
 }
