@@ -62,7 +62,7 @@ function UserTags(props) {
 function Sidemenu(props) {
   return (
     <aside
-      style={{ display: props.renderMenu ? 'none' : '' }}
+      style={{ display: props.renderMenu ? '' : 'none' }}
       className={styles.wrap}
     >
       <SystemTags
