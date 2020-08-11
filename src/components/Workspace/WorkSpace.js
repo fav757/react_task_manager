@@ -43,6 +43,9 @@ function Workspace(props) {
 
   return (
     <div className={styles.wrap}>
+      <div className={styles.createNote}>
+        <input placeholder='Create a new note' />
+      </div>
       <div className={styles.pinnedHeader}>
         <Icon icon={pinIcon} title='pin' />
         <h3>Pinned notes:</h3>

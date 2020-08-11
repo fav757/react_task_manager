@@ -18,3 +18,23 @@
   text-align: center;
   justify-content: center;
 }
+
+.pinnedHeader h3{
+  margin: 0;
+}
+
+.createNote {
+  text-align: center;
+  padding: 1rem;
+}
+
+.createNote input {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0 0 5px lightgray;
+}
+
+.createNote input:focus {
+  outline: none;
+}
