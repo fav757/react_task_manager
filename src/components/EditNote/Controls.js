@@ -175,7 +175,7 @@ function AddToArchive(props) {
     props.editNote({
       id: props.id,
       property: 'system',
-      value: 'arhived',
+      value: 'archived',
     });
     props.close();
   };

@@ -19,7 +19,7 @@ const initialState = [
     text: 'This is the your second note provided to test application',
     tags: ['music'],
     color: 'tomato',
-    system: 'notes',
+    system: 'archived',
   },
   {
     isPinned: true,

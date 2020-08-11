@@ -26,7 +26,7 @@ function Workspace(props) {
       note,
       props
     );
-    if (isPinned && isSearchQuery && isSearchQuery && isSystem && isTag) {
+    if (isPinned && isSearchQuery && isSystem && isTag) {
       return <Note key={index} id={index} />;
     }
   });
@@ -36,7 +36,7 @@ function Workspace(props) {
       note,
       props
     );
-    if (!isPinned && isSearchQuery && isSearchQuery && isSystem && isTag) {
+    if (!isPinned && isSearchQuery && isSystem && isTag) {
       return <Note key={index} id={index} />;
     }
   });
