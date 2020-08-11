@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
 import SearchPanel from '../SearchPanel/SearchPanel';
-import AuthorCard from '../AuthorCard/AuthorCard';
 import burgerIcon from './burger_icon.svg';
 import Icon from '../Icon/Icon';
 import logoIcon from './logo_placeholder.png';
@@ -33,7 +32,6 @@ function Header(props) {
       <BurgerButton toglleMenu={props.toglleMenu}/>
       <Logo />
       <SearchPanel />
-      <AuthorCard />
     </header>
   );
 }
