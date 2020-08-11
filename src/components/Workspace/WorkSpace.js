@@ -8,10 +8,11 @@ import pinIcon from './pin_icon.svg';
 function Workspace(props) {
   const pinnedNotes = props.notesDatabase.map((note, index) => {
     if (
-      note.isPinned &&
-      (note.text.includes(props.searchQuery) ||
-        note.title.includes(props.searchQuery)) &&
-      note.system === props.systemTag &&
+      (note.isPinned &&
+        (note.text.includes(props.searchQuery) ||
+          note.title.includes(props.searchQuery)) &&
+        note.system === props.systemTag &&
+        props.userTag === 'all') ||
       note.tags.includes(props.userTag)
     ) {
       return <Note key={index} id={index} />;
@@ -20,10 +21,11 @@ function Workspace(props) {
 
   const notPinnedNotes = props.notesDatabase.map((note, index) => {
     if (
-      !note.isPinned &&
-      (note.text.includes(props.searchQuery) ||
-        note.title.includes(props.searchQuery)) &&
-      note.system === props.systemTag &&
+      (!note.isPinned &&
+        (note.text.includes(props.searchQuery) ||
+          note.title.includes(props.searchQuery)) &&
+        note.system === props.systemTag &&
+        props.userTag === 'all') ||
       note.tags.includes(props.userTag)
     ) {
       return <Note key={index} id={index} />;

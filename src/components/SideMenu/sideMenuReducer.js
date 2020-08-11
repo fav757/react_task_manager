@@ -2,7 +2,7 @@ import { SET_SYSTEM_TAG, SET_USER_TAG } from './sideMenuActions';
 
 const initialState = {
   systemTag: 'notes',
-  userTag: null,
+  userTag: 'all',
 };
 
 function sideMenuReducer(state = initialState, action) {
