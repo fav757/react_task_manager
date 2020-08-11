@@ -14,22 +14,13 @@ const initialState = [
   },
   {
     isPinned: true,
-    images: [],
+    images: [notePlaceholder2],
     title: 'Inital note 2',
     text: 'This is the your second note provided to test application',
     tags: ['music'],
     color: 'tomato',
     system: 'notes',
-  },
-  {
-    isPinned: true,
-    images: [notePlaceholder2],
-    title: 'Inital note 3',
-    text: 'This is the your third note provided to test application',
-    tags: ['home', 'study'],
-    color: 'lightgreen',
-    system: 'notes',
-  },
+  }
 ];
 
 function workspaceReducer(state = initialState, action) {
