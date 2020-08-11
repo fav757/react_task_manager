@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Workspace.module.css';
 import Note from '../Note/Note';
 import { connect } from 'react-redux';
 import Icon from '../Icon/Icon';
 import pinIcon from './pin_icon.svg';
+import EditNote from '../EditNote/EditNote';
+import { addNote } from './workspaceActions';
 
 function checkNoteProperites(note, props) {
   // Is note pinned?
@@ -18,6 +20,24 @@ function checkNoteProperites(note, props) {
   const isTag = props.userTag === 'all' || note.tags.includes(props.userTag);
 
   return { isPinned, isSearchQuery, isSystem, isTag };
+}
+
+function CreateNoteInput(props) {
+  const [renderEdit, setRenderEdit] = useState(false);
+  const handleFocus = () => {
+    props.addNote();
+    setRenderEdit(true);
+  };
+
+  const id = props.notesDatabase.length - 1;
+  return (
+    <div className={styles.createNote}>
+      <input onFocus={handleFocus} placeholder='Create a new note' />
+      {renderEdit && (
+        <EditNote id={id} close={() => setRenderEdit(false)} />
+      )}
+    </div>
+  );
 }
 
 function Workspace(props) {
@@ -43,9 +63,7 @@ function Workspace(props) {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.createNote}>
-        <input placeholder='Create a new note' />
-      </div>
+      <CreateNoteInput addNote={props.addNote} notesDatabase={props.notesDatabase}/>
       <div className={styles.pinnedHeader}>
         <Icon icon={pinIcon} title='pin' />
         <h3>Pinned notes:</h3>
@@ -63,4 +81,8 @@ const mapStateToProps = (state) => ({
   userTag: state.sideMenuReducer.userTag,
 });
 
-export default connect(mapStateToProps)(Workspace);
+const mapDispatchToProps = (dispatch) =>({
+  addNote: () => dispatch(addNote)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Workspace);

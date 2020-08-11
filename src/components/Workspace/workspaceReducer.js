@@ -14,7 +14,7 @@ const initialState = [
   },
   {
     isPinned: true,
-    images: [notePlaceholder2],
+    images: [],
     title: 'Inital note 2',
     text: 'This is the your second note provided to test application',
     tags: ['music'],
@@ -29,13 +29,22 @@ const initialState = [
     tags: ['home', 'study'],
     color: 'lightgreen',
     system: 'notes',
-  }
+  },
 ];
 
 function workspaceReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_NOTE:
-      return [...state, action.payload];
+      const newNote = {
+        isPinned: false,
+        images: [],
+        title: '',
+        text: '',
+        tags: [],
+        color: 'white',
+        system: 'notes',
+      };
+      return [...state, newNote];
     case EDIT_NOTE:
       const newState = [...state];
       newState[action.payload.id][action.payload.property] =

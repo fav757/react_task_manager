@@ -28,13 +28,13 @@
   padding: 1rem;
 }
 
-.createNote input {
+.createNote>input {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   border: none;
   box-shadow: 0 0 5px lightgray;
 }
 
-.createNote input:focus {
+.createNote>input:focus {
   outline: none;
 }
