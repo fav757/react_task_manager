@@ -12,15 +12,19 @@ function SystemTags(props) {
     props.setSystemTag(event.currentTarget.dataset.tag);
   };
 
+  const style = (tag) => ({
+    background: props.systemTag === tag ? 'lavender' : '',
+  });
+
   return (
     <div className={styles.section}>
-      <div onClick={handleClick} data-tag='notes'>
+      <div style={style('notes')} onClick={handleClick} data-tag='notes'>
         <TagedItem title='notes' icon={noteIcon} />
       </div>
-      <div onClick={handleClick} data-tag='archived'>
+      <div style={style('archived')} onClick={handleClick} data-tag='archived'>
         <TagedItem title='archived' icon={archiveIcon} />
       </div>
-      <div onClick={handleClick} data-tag='deleted'>
+      <div style={style('deleted')} onClick={handleClick} data-tag='deleted'>
         <TagedItem title='deleted' icon={deletedIcon} />
       </div>
     </div>
@@ -57,7 +61,10 @@ function Sidemenu(props) {
       style={{ display: props.renderMenu ? 'none' : '' }}
       className={styles.wrap}
     >
-      <SystemTags setSystemTag={props.setSystemTag} />
+      <SystemTags
+        setSystemTag={props.setSystemTag}
+        systemTag={props.systemTag}
+      />
       <UserTags database={props.database} setUserTag={props.setUserTag} />
     </aside>
   );
@@ -66,6 +73,8 @@ function Sidemenu(props) {
 const mapStateToProps = (state) => ({
   renderMenu: state.headerReducer.menuIsOpen,
   database: state.workspaceReducer,
+  systemTag: state.sideMenuReducer.systemTag,
+  userTag: state.sideMenuReducer.userTag,
 });
 
 const mapDispatchToProps = (dispatch) => ({
