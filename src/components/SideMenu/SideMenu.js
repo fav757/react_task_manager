@@ -39,7 +39,7 @@ function UserTags(props) {
 
   return (
     <div className={styles.section}>
-      <div data-tag={''} onClick={handleClick}>
+      <div data-tag={'all'} onClick={handleClick}>
         <TagedItem title={'all'} />
       </div>
       {Array.from(tags).map((tag) => (
