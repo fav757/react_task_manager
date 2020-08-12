@@ -45,6 +45,7 @@
 .controlls {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -165,4 +166,8 @@
   border: 1px solid ghostwhite;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+}
+
+.tasksItem>input[data-for="name"]:focus {
+  outline: none;
 }

@@ -6,7 +6,6 @@ import paletteIcon from './palette_icon.svg';
 import tagIcon from './tag_icon.svg';
 import archiveIcon from './archive_icon.svg';
 import pictureIcon from './picture_icon.svg';
-import tasksIcon from './tasks_icon.svg';
 import pinIcon from './pin_icon.svg';
 import deleteIcon from './deleted_icon.svg';
 import TagedItem from '../TagedItem/TagedItem';
@@ -231,9 +230,6 @@ function Controlls(props) {
       />
       <PaletteIcon id={props.id} editNote={props.editNote} />
       <AddPictureIcon images={props.data.images} editNote={props.editNote} />
-      <div>
-        <Icon title='tasks' icon={tasksIcon} />
-      </div>
       <AddToArchive
         id={props.id}
         editNote={props.editNote}
