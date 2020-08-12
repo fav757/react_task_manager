@@ -146,7 +146,23 @@
   list-style: none;
 }
 
+.tasksList>*:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.createTaskButton>div {
+  margin: 0 auto;
+}
+
 .tasksItem {
   display: flex;
   align-items: center;
+}
+
+.tasksItem>input[data-for="name"] {
+  width: 100%;
+  background: inherit;
+  border: 1px solid ghostwhite;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './EditNote.module.css';
 import Icon from '../Icon/Icon';
 import deleteIcon from './deleted_icon.svg';
+import plusIcon from './plus_icon.svg';
 
 function TaskItem(props) {
   const [listItem, setListItem] = useState({
@@ -57,6 +58,14 @@ function TaskItem(props) {
 }
 
 function TaskList(props) {
+  const handleClick = () => {
+    props.editNote({
+      id: props.id,
+      property: 'tasks',
+      value: [...props.tasks, {done: false, name: ''}],
+    });
+  };
+
   return (
     <ul className={styles.tasksList}>
       {props.tasks.map((task, index) => (
@@ -69,6 +78,9 @@ function TaskList(props) {
           id={props.id}
         />
       ))}
+      <li className={styles.createTaskButton} title='add new task' onClick={handleClick}>
+        <Icon title='plus' icon={plusIcon} />
+      </li>
     </ul>
   );
 }
