@@ -9,6 +9,16 @@ function TaskItem(props) {
     name: props.task.name,
   });
 
+  const hadleClick = () => {
+    const newList = props.tasks.slice();
+    newList.splice(props.index, 1);
+    props.editNote({
+      id: props.id,
+      property: 'tasks',
+      value: newList,
+    });
+  }
+
   const handleChange = (event) => {
     const newState = Object.assign({}, listItem);
 
@@ -39,7 +49,7 @@ function TaskItem(props) {
         type='checkbox'
       />
       <input data-for='name' onChange={handleChange} value={listItem.name} />
-      <div>
+      <div onClick={hadleClick}>
         <Icon title='delete task' icon={deleteIcon} />
       </div>
     </li>
