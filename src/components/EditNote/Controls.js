@@ -229,7 +229,7 @@ function Controlls(props) {
         tags={props.data.tags}
       />
       <PaletteIcon id={props.id} editNote={props.editNote} />
-      <AddPictureIcon images={props.data.images} editNote={props.editNote} />
+      <AddPictureIcon id={props.id} images={props.data.images} editNote={props.editNote} />
       <AddToArchive
         id={props.id}
         editNote={props.editNote}
