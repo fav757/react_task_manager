@@ -71,8 +71,8 @@
   background: lightpink;
 }
 
-.paletteModal div[data-color="tomato"] {
-  background: tomato;
+.paletteModal div[data-color="palevioletred"] {
+  background: palevioletred;
 }
 
 .paletteModal div[data-color="lightskyblue"] {

@@ -51,11 +51,15 @@ function TagsModal(props) {
   const handleChange = (event) => setNewTag(event.target.value);
 
   const addTag = () => {
-    props.editNote({
-      id: props.id,
-      property: 'tags',
-      value: [...props.tags, newTag],
-    });
+    if (props.tags.includes(newTag)) {
+      alert('Such tag already exists');
+    } else {
+      props.editNote({
+        id: props.id,
+        property: 'tags',
+        value: [...props.tags, newTag],
+      });
+    }
   };
 
   return (
@@ -102,7 +106,7 @@ function PaletteModal(props) {
   return (
     <div className={styles.paletteModal}>
       <div onClick={handleClick} data-color={'lightpink'}></div>
-      <div onClick={handleClick} data-color={'tomato'}></div>
+      <div onClick={handleClick} data-color={'palevioletred'}></div>
       <div onClick={handleClick} data-color={'lightskyblue'}></div>
       <div onClick={handleClick} data-color={'lightgreen'}></div>
       <div onClick={handleClick} data-color={'lightsalmon'}></div>
@@ -229,7 +233,11 @@ function Controlls(props) {
         tags={props.data.tags}
       />
       <PaletteIcon id={props.id} editNote={props.editNote} />
-      <AddPictureIcon id={props.id} images={props.data.images} editNote={props.editNote} />
+      <AddPictureIcon
+        id={props.id}
+        images={props.data.images}
+        editNote={props.editNote}
+      />
       <AddToArchive
         id={props.id}
         editNote={props.editNote}
@@ -240,7 +248,11 @@ function Controlls(props) {
         editNote={props.editNote}
         close={props.close}
       />
-      <PinNote id={props.id} editNote={props.editNote} isPinned={props.data.isPinned} />
+      <PinNote
+        id={props.id}
+        editNote={props.editNote}
+        isPinned={props.data.isPinned}
+      />
     </div>
   );
 }
