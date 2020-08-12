@@ -1,9 +1,14 @@
 .wrap {
   border-bottom: 1px solid lightgray;
+  background: white;
   display: flex;
+  position: sticky;
+  top: 0;
+  flex-flow: row wrap;
+  justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .logo {
@@ -19,4 +24,10 @@
 .header {
   font-size: 2rem;
   margin: 0;
+}
+
+@media screen and (max-width: 576px) {
+ .wrap {
+  
+ }
 }

@@ -1,11 +1,11 @@
 .wrap {
   padding: 0 1rem;
-  flex: 7;
+  flex: 4;
 }
 
 .notesGrid {
   display: grid;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   gap: 1rem;
   padding: 1rem;
@@ -37,4 +37,22 @@
 
 .createNote>input:focus {
   outline: none;
+}
+
+@media screen and (max-width: 992px) {
+  .notesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .notesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .notesGrid {
+    grid-template-columns: 1fr;
+  }
 }
