@@ -26,7 +26,9 @@ function EditNote(props) {
             editNote={props.editNote}
             id={props.id}
           />
-          {tasks.length ? <TaskList tasks={tasks} /> : null}
+          {tasks.length ? (
+            <TaskList editNote={props.editNote} id={props.id} tasks={tasks} />
+          ) : null}
           <Inputs
             id={props.id}
             title={title}

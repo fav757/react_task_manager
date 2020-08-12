@@ -7,7 +7,10 @@ const initialState = [
     isPinned: false,
     images: [notePlaceholder1],
     title: 'Inital note 1',
-    tasks: ['do homework', 'call parents'],
+    tasks: [
+      { done: false, name: 'do homework' },
+      { done: true, name: 'call parents' },
+    ],
     text: 'This is the your first note provided to test application',
     tags: ['home', 'work'],
     color: 'lightskyblue',
@@ -22,7 +25,7 @@ const initialState = [
     tags: ['music'],
     color: 'tomato',
     system: 'notes',
-  }
+  },
 ];
 
 function workspaceReducer(state = initialState, action) {
@@ -32,6 +35,7 @@ function workspaceReducer(state = initialState, action) {
         isPinned: false,
         images: [],
         title: '',
+        tasks: [],
         text: '',
         tags: [],
         color: 'white',

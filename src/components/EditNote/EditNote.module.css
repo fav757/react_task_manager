@@ -145,3 +145,8 @@
   padding: 0;
   list-style: none;
 }
+
+.tasksItem {
+  display: flex;
+  align-items: center;
+}
