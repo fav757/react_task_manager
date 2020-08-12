@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './EditNote.module.css';
 import Icon from '../Icon/Icon';
 import deleteIcon from './deleted_icon.svg';
@@ -16,12 +16,10 @@ function TaskItem(props) {
       event.target.type === 'checkbox'
         ? event.target.checked
         : event.target.value;
-
     setListItem(newState);
 
     const newList = props.tasks.slice();
-    newList.splice(props.index, 1, listItem);
-
+    newList.splice(props.index, 1, newState);
     props.editNote({
       id: props.id,
       property: 'tasks',
@@ -32,7 +30,7 @@ function TaskItem(props) {
   return (
     <li
       className={styles.tasksItem}
-      style={{ textDecoration: props.task.done ? '' : 'line-through' }}
+      style={{ textDecoration: listItem.done ? 'line-through' : '' }}
     >
       <input
         data-for='done'
