@@ -161,6 +161,7 @@
 }
 
 .tasksItem>input[data-for="name"] {
+  font-size: 1rem;
   width: 100%;
   background: inherit;
   border: 1px solid ghostwhite;

@@ -21,8 +21,7 @@ function Note(props) {
         {tasks.length ? (
           <ul className={styles.tasksList}>
             {tasks.map((task) => (
-              <li key={task.name}>
-                <input disabled type='checkbox' />
+              <li style={{textDecoration: task.done? 'line-through' : '' }} key={task.name}>
                 {task.name}
               </li>
             ))}
