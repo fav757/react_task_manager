@@ -26,8 +26,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 576px) {
- .wrap {
-  
- }
+.resumeLink {
+  display: flex;
+  align-items: center;
 }

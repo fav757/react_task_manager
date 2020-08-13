@@ -1,5 +1,6 @@
 .wrap {
   display: flex;
+  min-width: 576px;
   box-shadow: 0 0 5px lightgray;
   border-radius: 1rem;
   padding: 0.25rem 0.5rem;
@@ -12,4 +13,10 @@
 
 .input:focus {
   outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .wrap {
+    min-width: 100%;
+  }
 }

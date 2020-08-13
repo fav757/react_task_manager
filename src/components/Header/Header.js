@@ -6,12 +6,13 @@ import Icon from '../Icon/Icon';
 import logoIcon from './logo_placeholder.png';
 import { connect } from 'react-redux';
 import { toggleSideMenu } from './headerActions';
+import linkIcon from './link_icon.svg';
 
 function BurgerButton(props) {
   const handleClick = () => props.toglleMenu();
 
   return (
-    <div onClick={handleClick}>
+    <div className={styles.burger} onClick={handleClick}>
       <Icon title='Burger' icon={burgerIcon} />
     </div>
   );
@@ -26,12 +27,24 @@ function Logo() {
   );
 }
 
+function ResumeLink() {
+  return (
+    <div className={styles.resumeLink}>
+      <Icon title='link' icon={linkIcon} />
+      <div className={styles.resumeHidden}>
+        <a href='https://fav757.github.io/'>https://fav757.github.io/</a>
+      </div>
+    </div>
+  );
+}
+
 function Header(props) {
   return (
     <header className={styles.wrap}>
       <BurgerButton toglleMenu={props.toglleMenu}/>
       <Logo />
       <SearchPanel />
+      <ResumeLink />
     </header>
   );
 }
