@@ -1,47 +1,24 @@
 import { ADD_NOTE, EDIT_NOTE } from './workspaceActions';
-import notePlaceholder1 from './notePlaceholder1.jpg';
-import notePlaceholder2 from './notePlaceholder2.jpg';
+import initialPicture from './initial_note_picture.jpg';
 
 const initialState = [
   {
-    isPinned: false,
-    images: [notePlaceholder1],
-    title: 'Inital note 1',
+    isPinned: true,
+    images: [initialPicture],
+    title: 'Inital note',
     tasks: [
-      { done: false, name: 'do homework' },
-      { done: true, name: 'call parents' },
+      { done: true, name: 'Visit my website' },
+      { done: false, name: 'Explore it' },
+      { done: false, name: 'Contact me' },
     ],
-    text: 'This is the your first note provided to test application',
-    tags: ['home', 'work'],
+    text:
+      'Hello! My name\'s Alex and I am trainee front-end developer.' +
+      'Here you can see my little note\'s app. If you want to find' +
+      'information about me please visit my personal resume website',
+    tags: ['front-end', 'react'],
     color: 'lightskyblue',
     system: 'notes',
   },
-  {
-    isPinned: false,
-    images: [notePlaceholder1],
-    title: 'Inital note 2',
-    tasks: [
-      { done: false, name: 'do homework' },
-      { done: true, name: 'call parents' },
-    ],
-    text: 'This is the your first note provided to test application',
-    tags: ['home', 'work'],
-    color: 'lightskyblue',
-    system: 'notes',
-  },
-  {
-    isPinned: false,
-    images: [notePlaceholder1],
-    title: 'Inital note 3',
-    tasks: [
-      { done: false, name: 'do homework' },
-      { done: true, name: 'call parents' },
-    ],
-    text: 'This is the your first note provided to test application',
-    tags: ['home', 'work'],
-    color: 'lightskyblue',
-    system: 'notes',
-  }
 ];
 
 function workspaceReducer(state = initialState, action) {
