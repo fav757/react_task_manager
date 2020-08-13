@@ -10,6 +10,7 @@
 
 .form {
   max-height: 90vh;
+  max-width: 576px;
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
@@ -37,6 +38,7 @@
 
 .tagList {
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   gap: 1rem;
   border-top: 1px solid ghostwhite;
