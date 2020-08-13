@@ -109,7 +109,7 @@ function workspaceReducer(state = initialState, action) {
         color: 'white',
         system: 'notes',
       };
-      return [...state, newNote];
+      return [newNote, ...state];
     case EDIT_NOTE:
       const newState = [...state];
       newState[action.payload.id][action.payload.property] =
