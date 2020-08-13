@@ -11,24 +11,10 @@ import deleteIcon from './deleted_icon.svg';
 import TagedItem from '../TagedItem/TagedItem';
 
 function CloseModalIcon(props) {
-  useEffect(() => {
-    const closeModal = (event) => {
-      if (event.target.classList.contains(styles.wrap)) {
-        props.close();
-      }
-    };
-
-    document.addEventListener('click', closeModal);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.removeEventListener('click', closeModal);
-      document.body.style.overflow = '';
-    };
-  }, []);
+  const handleClick = () => props.close();
 
   return (
-    <div onClick={props.close}>
+    <div onClick={handleClick}>
       <Icon title='back' icon={backIcon} />
     </div>
   );

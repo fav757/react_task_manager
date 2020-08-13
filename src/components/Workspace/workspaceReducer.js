@@ -19,7 +19,7 @@ const initialState = [
   {
     isPinned: false,
     images: [notePlaceholder1],
-    title: 'Inital note 1',
+    title: 'Inital note 2',
     tasks: [
       { done: false, name: 'do homework' },
       { done: true, name: 'call parents' },
@@ -32,7 +32,7 @@ const initialState = [
   {
     isPinned: false,
     images: [notePlaceholder1],
-    title: 'Inital note 1',
+    title: 'Inital note 3',
     tasks: [
       { done: false, name: 'do homework' },
       { done: true, name: 'call parents' },
@@ -41,59 +41,7 @@ const initialState = [
     tags: ['home', 'work'],
     color: 'lightskyblue',
     system: 'notes',
-  },
-  {
-    isPinned: false,
-    images: [notePlaceholder1],
-    title: 'Inital note 1',
-    tasks: [
-      { done: false, name: 'do homework' },
-      { done: true, name: 'call parents' },
-    ],
-    text: 'This is the your first note provided to test application',
-    tags: ['home', 'work'],
-    color: 'lightskyblue',
-    system: 'notes',
-  },
-  {
-    isPinned: false,
-    images: [notePlaceholder1],
-    title: 'Inital note 1',
-    tasks: [
-      { done: false, name: 'do homework' },
-      { done: true, name: 'call parents' },
-    ],
-    text: 'This is the your first note provided to test application',
-    tags: ['home', 'work'],
-    color: 'lightskyblue',
-    system: 'notes',
-  },
-  {
-    isPinned: false,
-    images: [notePlaceholder1],
-    title: 'Inital note 1',
-    tasks: [
-      { done: false, name: 'do homework' },
-      { done: true, name: 'call parents' },
-    ],
-    text: 'This is the your first note provided to test application',
-    tags: ['home', 'work'],
-    color: 'lightskyblue',
-    system: 'notes',
-  },
-  {
-    isPinned: false,
-    images: [notePlaceholder1],
-    title: 'Inital note 1',
-    tasks: [
-      { done: false, name: 'do homework' },
-      { done: true, name: 'call parents' },
-    ],
-    text: 'This is the your first note provided to test application',
-    tags: ['home', 'work'],
-    color: 'lightskyblue',
-    system: 'notes',
-  },
+  }
 ];
 
 function workspaceReducer(state = initialState, action) {
