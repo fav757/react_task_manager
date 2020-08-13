@@ -29,12 +29,11 @@ function CreateNoteInput(props) {
     setRenderEdit(true);
   };
 
-  const id = props.notesDatabase.length - 1;
   return (
     <div className={styles.createNote}>
       <input onFocus={handleFocus} placeholder='Create a new note' />
       {renderEdit && (
-        <EditNote id={id} close={() => setRenderEdit(false)} />
+        <EditNote id={0} close={() => setRenderEdit(false)} />
       )}
     </div>
   );
