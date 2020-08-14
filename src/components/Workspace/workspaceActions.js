@@ -8,3 +8,9 @@ export const editNote = (noteData) => ({
   type: EDIT_NOTE,
   payload: noteData,
 });
+
+export const DELETE_NOTE = 'DELETE_NOTE';
+export const deleteNote = (noteData) => ({
+  type: DELETE_NOTE,
+  payload: noteData,
+});

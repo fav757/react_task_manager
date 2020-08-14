@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './EditNote.module.css';
 import TagedItem from '../TagedItem/TagedItem';
-import { editNote } from '../Workspace/workspaceActions';
+import { editNote, deleteNote } from '../Workspace/workspaceActions';
 import Inputs from './Inputs';
 import Controlls from './Controls';
 import ImagesSector from './ImagesSector';
@@ -19,6 +19,8 @@ function EditNote(props) {
           data={props.data[props.id]}
           editNote={props.editNote}
           close={props.close}
+          systemTag={props.systemTag}
+          deleteNote={props.deleteNote}
         />
         <div className={styles.formMainSector}>
           <ImagesSector
@@ -46,10 +48,12 @@ function EditNote(props) {
 
 const mapStateToProps = (state) => ({
   data: state.workspaceReducer,
+  systemTag: state.sideMenuReducer.systemTag
 });
 
 const mapDispatchToProps = (dispatch) => ({
   editNote: (value) => dispatch(editNote(value)),
+  deleteNote: (id) => dispatch(deleteNote(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditNote);

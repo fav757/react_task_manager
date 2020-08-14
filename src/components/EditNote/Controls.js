@@ -178,11 +178,15 @@ function AddToArchive(props) {
 
 function AddToDeleted(props) {
   const handleClick = () => {
-    props.editNote({
-      id: props.id,
-      property: 'system',
-      value: 'deleted',
-    });
+    if (props.systemTag === 'deleted') {
+      props.deleteNote(props.id);
+    } else {
+      props.editNote({
+        id: props.id,
+        property: 'system',
+        value: 'deleted',
+      });
+    }
     props.close();
   };
 
@@ -233,6 +237,8 @@ function Controlls(props) {
         id={props.id}
         editNote={props.editNote}
         close={props.close}
+        systemTag={props.systemTag}
+        deleteNote={props.deleteNote}
       />
       <PinNote
         id={props.id}
