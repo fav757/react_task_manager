@@ -3,15 +3,15 @@ import styles from './EditNote.module.css';
 
 function Inputs(props) {
   const handleChange = (event) => {
-    while (event.target.offsetHeight < event.target.scrollHeight) {
-      event.target.rows = +event.target.rows + 1;
-    }
-
     props.editNote({
       id: props.id,
       property: event.target.name,
       value: event.target.value,
     });
+
+    if (event.target.clientHeight < event.target.scrollHeight) {
+      event.target.style.height = event.target.clientHeight + 250 + 'px';
+    }
   };
 
   return (
@@ -23,8 +23,6 @@ function Inputs(props) {
         name='title'
       />
       <textarea
-        rows='3'
-        onFocus={handleChange}
         onChange={handleChange}
         defaultValue={props.text}
         className={styles.input}
