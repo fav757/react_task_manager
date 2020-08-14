@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './EditNote.module.css';
 import Icon from '../Icon/Icon';
 import deleteIcon from './deleted_icon.svg';
 import plusIcon from './plus_icon.svg';
 
 function TaskItem(props) {
-  const [listItem, setListItem] = useState({
-    done: props.task.done,
-    name: props.task.name,
-  });
-
   const hadleClick = () => {
     const newList = props.tasks.slice();
     newList.splice(props.index, 1);
@@ -18,19 +13,17 @@ function TaskItem(props) {
       property: 'tasks',
       value: newList,
     });
-  }
+  };
 
   const handleChange = (event) => {
-    const newState = Object.assign({}, listItem);
-
-    newState[event.target.dataset.for] =
+    const newTaskData = Object.assign({}, props.task);
+    newTaskData[event.target.dataset.for] =
       event.target.type === 'checkbox'
         ? event.target.checked
         : event.target.value;
-    setListItem(newState);
 
     const newList = props.tasks.slice();
-    newList.splice(props.index, 1, newState);
+    newList.splice(props.index, 1, newTaskData);
     props.editNote({
       id: props.id,
       property: 'tasks',
@@ -41,15 +34,15 @@ function TaskItem(props) {
   return (
     <li
       className={styles.tasksItem}
-      style={{ textDecoration: listItem.done ? 'line-through' : '' }}
+      style={{ textDecoration: props.task.done ? 'line-through' : '' }}
     >
       <input
         data-for='done'
-        checked={listItem.done}
+        checked={props.task.done}
         onChange={handleChange}
         type='checkbox'
       />
-      <input data-for='name' onChange={handleChange} value={listItem.name} />
+      <input data-for='name' onChange={handleChange} value={props.task.name} />
       <div onClick={hadleClick}>
         <Icon title='delete task' icon={deleteIcon} />
       </div>
@@ -62,7 +55,7 @@ function TaskList(props) {
     props.editNote({
       id: props.id,
       property: 'tasks',
-      value: [...props.tasks, {done: false, name: ''}],
+      value: [...props.tasks, { done: false, name: '' }],
     });
   };
 
@@ -78,7 +71,11 @@ function TaskList(props) {
           id={props.id}
         />
       ))}
-      <li className={styles.createTaskButton} title='add new task' onClick={handleClick}>
+      <li
+        className={styles.createTaskButton}
+        title='add new task'
+        onClick={handleClick}
+      >
         <Icon title='plus' icon={plusIcon} />
       </li>
     </ul>
