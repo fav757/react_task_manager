@@ -1,19 +1,23 @@
 .wrap {
   display: flex;
   flex-flow: column nowrap;
-  gap: 1rem;
   box-shadow: 0 0 5px lightgray;
   border-radius: 1rem;
   padding: 1rem;
 }
 
+.wrap>img {
+  margin-bottom: 1rem;
+}
+
 .header {
-  margin: 0;
+  margin: 0 0 1rem 0;
   overflow-wrap: break-word;
 }
 
 .text {
   overflow-wrap: break-word;
+  margin-bottom: 1rem;
 }
 
 .tags {
@@ -23,7 +27,7 @@
 }
 
 .tasksList {
-  margin: 0;
+  margin: 0 0 1rem 0;
   padding: 0;
   list-style: none;
 }
