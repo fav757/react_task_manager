@@ -29,6 +29,7 @@
   border: 1px solid ghostwhite;
   border-radius: 0.5rem;
   resize: none;
+  overflow: hidden;
 }
 
 .input:focus {

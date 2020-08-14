@@ -24,6 +24,7 @@ function Inputs(props) {
       />
       <textarea
         rows='3'
+        onFocus={handleChange}
         onChange={handleChange}
         defaultValue={props.text}
         className={styles.input}
