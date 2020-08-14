@@ -6,7 +6,6 @@ import Icon from '../Icon/Icon';
 import logoIcon from './logo_placeholder.png';
 import { connect } from 'react-redux';
 import { toggleSideMenu } from './headerActions';
-import linkIcon from './link_icon.svg';
 
 function BurgerButton(props) {
   const handleClick = () => props.toglleMenu();
