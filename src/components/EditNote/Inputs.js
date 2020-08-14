@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './EditNote.module.css';
 
 function Inputs(props) {
@@ -8,11 +8,14 @@ function Inputs(props) {
       property: event.target.name,
       value: event.target.value,
     });
-
-    if (event.target.clientHeight < event.target.scrollHeight) {
-      event.target.style.height = event.target.clientHeight + 250 + 'px';
-    }
   };
+
+  const ref = useRef();
+  useEffect(() => {
+    if (ref.current.clientHeight < ref.current.scrollHeight) {
+      ref.current.style.height = ref.current.scrollHeight + 16 + 'px';
+    }
+  });
 
   return (
     <React.Fragment>
@@ -23,6 +26,7 @@ function Inputs(props) {
         name='title'
       />
       <textarea
+        ref={ref}
         onChange={handleChange}
         defaultValue={props.text}
         className={styles.input}
