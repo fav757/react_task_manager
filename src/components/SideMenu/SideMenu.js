@@ -60,6 +60,10 @@ function UserTags(props) {
 }
 
 function Sidemenu(props) {
+  props.renderMenu
+    ? (document.body.style.overflow = 'hidden')
+    : (document.body.style.overflow = '');
+
   return (
     <aside
       style={{ display: props.renderMenu ? '' : 'none' }}
@@ -69,7 +73,11 @@ function Sidemenu(props) {
         setSystemTag={props.setSystemTag}
         systemTag={props.systemTag}
       />
-      <UserTags userTag={props.userTag} database={props.database} setUserTag={props.setUserTag} />
+      <UserTags
+        userTag={props.userTag}
+        database={props.database}
+        setUserTag={props.setUserTag}
+      />
     </aside>
   );
 }
