@@ -30,6 +30,7 @@
 }
 
 .createNote>input {
+  -webkit-appearance: none;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   border: none;
