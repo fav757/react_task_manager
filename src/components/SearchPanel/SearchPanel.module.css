@@ -1,6 +1,6 @@
 .wrap {
+  flex: 1;
   display: flex;
-  min-width: 576px;
   box-shadow: 0 0 5px lightgray;
   border-radius: 1rem;
   padding: 0.25rem 0.5rem;
@@ -15,8 +15,9 @@
   outline: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
   .wrap {
-    min-width: 100%;
+    flex: none;
+    width: 100%;
   }
 }
