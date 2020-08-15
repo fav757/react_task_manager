@@ -26,27 +26,12 @@ function Logo() {
   );
 }
 
-function ResumeLink() {
-  return (
-    <div className={styles.linkTab}>
-      <div className={styles.hiddenSector}>
-        <div className={styles.slideButton}>{'>'}</div>
-        <div className={styles.fone}></div>
-      </div>
-      <a href='https://fav757.github.io/'>
-        https://fav757.github.io/
-      </a>
-    </div>
-  );
-}
-
 function Header(props) {
   return (
     <header className={styles.wrap}>
       <BurgerButton toglleMenu={props.toglleMenu} />
       <Logo />
       <SearchPanel />
-      <ResumeLink />
     </header>
   );
 }

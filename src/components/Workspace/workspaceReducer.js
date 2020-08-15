@@ -13,8 +13,7 @@ const initialState = [
     ],
     text:
       "Hello! My name's Alex and I am trainee front-end developer." +
-      "Here you can see my little note's app. If you want to find" +
-      'information about me please visit my personal resume website',
+      "Here you can see my little note's app.",
     tags: ['front-end', 'react'],
     color: 'lightskyblue',
     system: 'notes',
